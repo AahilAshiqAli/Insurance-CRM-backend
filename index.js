@@ -15,11 +15,26 @@ const dashboardRoutes = require("./routes/dashboardRoutes"); // Correct the vari
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3001", // Local development
+  "http://localhost:3000", // Another local frontend
+  "https://yourfrontend.com", // Deployed frontend
+  "https://staging.yourfrontend.com", // Staging frontend
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3001", // Frontend URL
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow request
+      } else {
+        callback(new Error("Not allowed by CORS")); // Block request
+      }
+    },
+    credentials: true, // Allow cookies and authentication headers
   })
 );
+
 app.get("/", (req, res) => res.send("Express on Vercel"));
 // Middleware
 app.use(bodyParser.json());
