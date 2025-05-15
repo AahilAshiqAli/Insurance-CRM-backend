@@ -8,7 +8,7 @@ integrating user-centric technology and AI-driven assistance, our solution aims 
 
 1. **Clone the repository**
  ```bash
- git clone https://github.com/yourusername/Insurance-CRM-backend.git
+ git clone https://github.com/AahilAshiqAli/Insurance-CRM-backend.git
  ```
    
 2. **Navigate to the project folder**
